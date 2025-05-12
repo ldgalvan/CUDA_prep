@@ -1,8 +1,6 @@
 # CUDA_prep
 Ramping up on parallel programming basics and gpu architecture experiments.
 
-## Roofline project
-
 ## 📘 Mathematical Summary of Benchmarks
 
 ### 🔴 `vec_opN` Kernel (Red Dots in Roofline Plot)
@@ -10,12 +8,12 @@ Ramping up on parallel programming basics and gpu architecture experiments.
 In the `vec_opN` benchmark, we evaluate a synthetic vector operation that performs a tunable number of floating-point operations (FLOPs) per memory element accessed. For a given number of FLOPs per element (`FLOP_COUNT`), each thread executes:
 
 $$
-C[i] = \sum_{j=1}^{\text{FLOP\_COUNT}/4} \left( A[i] \cdot B[i] + D[i] \cdot E[i] \right)
+C[i] = \sum_{j=1}^{\mathrm{FLOP\_COUNT}/4} \left( A[i] \cdot B[i] + D[i] \cdot E[i] \right)
 $$
 
 #### Total FLOPs:
 $$
-\text{FLOPs} = N \cdot \text{FLOP\_COUNT}
+\mathrm{FLOPs} = N \cdot \mathrm{FLOP\_COUNT}
 $$
 
 #### Memory Bytes Moved:
@@ -27,7 +25,7 @@ $$
 
 #### Arithmetic Intensity:
 $$
-\text{Intensity} = \frac{\text{FLOPs}}{\text{Bytes}} = \frac{N \cdot \text{FLOP\_COUNT}}{5 \cdot N \cdot 4} = \frac{\text{FLOP\_COUNT}}{20}
+\text{Intensity} = \frac{N \cdot \mathrm{FLOP\_COUNT}}{5 \cdot N \cdot 4} = \frac{\mathrm{FLOP\_COUNT}}{20}
 $$
 
 > The `vec_opN` kernel is used to **sweep arithmetic intensity** by increasing `FLOP_COUNT` and analyzing how performance shifts from memory-bound to compute-bound behavior.
@@ -44,7 +42,7 @@ $$
 
 #### Total FLOPs:
 $$
-\text{FLOPs} = 2 \cdot N^3
+\mathrm{FLOPs} = 2 \cdot N^3
 $$
 
 #### Memory Bytes Moved:
@@ -64,6 +62,7 @@ $$
 ---
 
 These two benchmarks allow us to **sweep across a range of arithmetic intensities**, visualizing memory- and compute-bound regions on the roofline plot of the RTX 3090. Red dots represent `vec_opN`, and black/gray triangles represent `matmul`.
+
 
 
 ![Screenshot 2025-05-11 223540](https://github.com/user-attachments/assets/50f46948-5c92-433d-bfc6-b1dbd46eb54a)
