@@ -1,9 +1,9 @@
 # CUDA_prep
 Ramping up on parallel programming basics and gpu architecture experiments.
 
-## 📘 Mathematical Summary of Benchmarks
+## Summary of Benchmarks
 
-### 🔴 `vec_opN` Kernel (Red Dots in Roofline Plot)
+### 🔴 `vec_opN` Kernel
 
 In the `vec_opN` benchmark, we evaluate a synthetic vector operation that performs a tunable number of floating-point operations (FLOPs) per memory element accessed. For a given number of FLOPs per element (`FLOP_COUNT`), each thread executes:
 
@@ -32,9 +32,9 @@ $$
 
 ---
 
-### ⚫ `matmul` Kernel (Black/Gray Triangles in Plot)
+### ⚫ `matmul` Kernel
 
-In the `matmul` benchmark, we perform standard dense matrix multiplication:
+We investigated standard dense matrix multiplication:
 
 $$
 C_{ij} = \sum_{k=1}^{N} A_{ik} \cdot B_{kj}
