@@ -10,7 +10,7 @@ Ramping up on parallel programming basics and gpu architecture experiments.
 In the `vec_opN` benchmark, we evaluate a synthetic vector operation that performs a tunable number of floating-point operations (FLOPs) per memory element accessed. For a given number of FLOPs per element (`FLOP_COUNT`), each thread executes:
 
 $$
-C[i] = \sum_{j=1}^{FLOP\_COUNT/4} \left( A[i] \cdot B[i] + D[i] \cdot E[i] \right)
+C[i] = \sum_{j=1}^{\text{FLOP\_COUNT}/4} \left( A[i] \cdot B[i] + D[i] \cdot E[i] \right)
 $$
 
 #### Total FLOPs:
@@ -64,5 +64,6 @@ $$
 ---
 
 These two benchmarks allow us to **sweep across a range of arithmetic intensities**, visualizing memory- and compute-bound regions on the roofline plot of the RTX 3090. Red dots represent `vec_opN`, and black/gray triangles represent `matmul`.
+
 
 ![Screenshot 2025-05-11 223540](https://github.com/user-attachments/assets/50f46948-5c92-433d-bfc6-b1dbd46eb54a)
