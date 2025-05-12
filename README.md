@@ -5,7 +5,7 @@ Ramping up on parallel programming basics and gpu architecture experiments.
 
 ### 🔴 `vec_opN` Kernel
 
-In the `vec_opN` benchmark, we evaluate a synthetic vector operation that performs a tunable number of floating-point operations (FLOPs) per memory element accessed. For a given number of FLOPs per element (`FLOP_COUNT`), each thread executes:
+Approach: Execute a synthetic vector operation that performs a fixed number of floating-point operations (FLOPs) per memory element accessed. For a given number of FLOPs per element (`FLOP_COUNT`), each thread executes:
 
 $$
 C[i] = \sum_{j=1}^{\mathrm{FLOP\_COUNT}/4} \left( A[i] \cdot B[i] + D[i] \cdot E[i] \right)
